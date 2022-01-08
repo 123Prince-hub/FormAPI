@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormAPI</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        {{form}}
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <hr><br>
+
+
+
+    <form action="" method="post">
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+    <br><hr><br>
+
+
+
+
+    <form action="" method="post">
+        {{form.as_ul}}
+        <input type="submit" value="Submit">
+    </form>
+    <br><hr><br>
+
+
+
+    <form action="" method="post">
+        <div>
+            <label for="{{form.name.id_for_label}}">Name : </label>
+            {{form.name}}
+        </div>
+        <div>
+            {{form.email.label_tag}}
+            {{form.email}}
+            {% comment %} {{form.email.value}} get value of field
+            {{form.email.html_name}} get name of field
+            {{form.email.help_text}} get help text of field which include in forms.py file {% endcomment %}
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <br><hr><br>
+
+
+
+    <form action="" method="post">
+        <div>
+            <label for="id_name">Name: </label>
+            <input type="text" id="id_name" name="name" required>
+        </div>
+
+        <div>
+            <!-- <label for="{{form.name.}}">Name: </label> -->
+            {{form.name.label_tag}}
+            {{form.name}}
+            
+            <!-- {{form.name.label}}     show name of label not for attribute 
+                {{form.name.value}}      value of html attribute
+                {{form.name.html_name}}    get of html name attribute
+                {{form.name.field.attributeName}}    get of html field attribute
+            -->
+        </div>
+        <!-- <input type="submit" value="Submit"> -->
+    </form>
+    <br><hr><br>
+
+
+
+
+    <form action="" method="get">
+        {% for fld in form.visible_fields %}
+            {{fld.label_tag}}
+            {{fld}}
+        {% endfor %}
+
+        {% for hiddens in form.hidden_fields %}
+            <!-- {{hiddens.label_tag}} -->
+            {{hiddens}}
+        {% endfor %}
+
+        <input type="submit" value="Submit">
+    </form>
+    <br><hr><br>
+
+
+
+
+    <form action="" method="get">
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
